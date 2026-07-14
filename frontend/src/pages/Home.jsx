@@ -1,3 +1,4 @@
+import Dashboard from "../components/Dashboard";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import ExpenseForm from "../components/ExpenseForm";
@@ -28,30 +29,18 @@ export default function Home() {
 
       <div className="max-w-5xl mx-auto p-6">
        <ExpenseForm
-         fetchExpenses={fetchExpenses}
-         editingExpense={editingExpense}
-         setEditingExpense={setEditingExpense}
-        />
+  fetchExpenses={fetchExpenses}
+  editingExpense={editingExpense}
+  setEditingExpense={setEditingExpense}
+/>
 
-        <div className="bg-blue-600 text-white rounded-lg shadow p-6 mt-6">
-  <h2 className="text-xl font-semibold">
-    Total Expenses
-  </h2>
+<Dashboard expenses={expenses} />
 
-  <p className="text-3xl font-bold mt-2">
-    ₹
-    {expenses.reduce(
-      (total, expense) => total + Number(expense.amount),
-      0
-    )}
-  </p>
-</div>
-
-       <ExpenseList
-        expenses={expenses}
-        fetchExpenses={fetchExpenses}
-        setEditingExpense={setEditingExpense}
-        />
+<ExpenseList
+  expenses={expenses}
+  fetchExpenses={fetchExpenses}
+  setEditingExpense={setEditingExpense}
+/>
       </div>
     </div>
   );
